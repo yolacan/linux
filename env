@@ -1,0 +1,9 @@
+## ENV VARIABLES ##
+LD_LIBRARY_PATH      # Çalışma zamanı dinamik kütüphane yükleyicisinin (ld.so) paylaşımlı kütüphaneleri (.so)
+                     # ararken öncelikli olarak bakacağı ek dizinleri tanımlayan ortam değişkenidir.
+                     # Bu liste, derleme anında ikiliye (binary) gömülen yolların ve sistem varsayılan kütüphane
+                     # dizinlerinin önüne (en başa) eklenir.
+                     # Güvenlik nedeniyle 'setuid' veya 'setgid' biti atanmış çalıştırılabilir dosyalarda yoksayılır;
+                     # bu durum değişkenin kullanım alanını sınırlar.
+HOME                 # Geçerli kullanıcının ev (home) dizininin mutlak yolunu tutar
+PATH                 # Sistemde komut çalıştırıldığında aranacak dizinlerin iki nokta (:) ile ayrılmış listesini tutar
