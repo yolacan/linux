@@ -1,0 +1,354 @@
+## COMMANDS ##
+which ls                                     # Komutun çalıştırılabilir ikili (binary) dosya yolunu PATH içinde arayıp bulur
+whereis ls                                   # Komuta ait binary, kaynak kod ve man page (kılavuz) dosyalarının konumlarını gösterir
+file /etc/passwd                             # Dosyanın gerçek türünü ve formatını analiz edip gösterir
+type ls                                      # Komutun türünü (alias, builtin, binary, function) görüntüler
+who                                          # Sistemde o an oturum açmış kullanıcıları listeler
+who -r                                       # Sistemin geçerli çalışma seviyesini (runlevel) ekrana basar
+w                                            # Sistemde oturum açan kullanıcıları ve o an çalıştırdıkları süreçleri görüntüler
+whoami                                       # Geçerli aktif kullanıcı adını (effective username) basar
+id                                           # Kullanıcının gerçek/etkin UID (kullanıcı ID) ve GID (grup ID) bilgilerini listeler
+man                                          # Sistem komutları ve konfigürasyon dosyaları için kılavuz (manual page) arayüzü
+info                                         # Komutlar için ayrıntılı GNU Info yardım belgelerini görüntüler
+shutdown                                     # Sistemi durdurur (halt), kapatır (power-off) veya yeniden başlatır (reboot)
+shutdown -c                                  # Planlanmış zamanlı sistem kapatma/yeniden başlatma işlemini iptal eder
+shutdown -r now                              # Sistemi derhal (beklemeden) yeniden başlatır
+uptime                                       # Sistemin ne kadar süredir açık olduğunu ve ortalama yük değerlerini (load average) gösterir
+tzselect                                     # Etkileşimli menü ile saat dilimi (timezone) seçimi yapar
+timedatectl                                  # Systemd ortamında sistem saatini, tarihini ve saat dilimini yönetir
+timedatectl set-time "2015-11-08 08:00:00"   # Sistem saat ve tarihini elle ayarlar
+timedatectl set-timezone "Asia/Kathmandu"    # Sistemin saat dilimini değiştirir
+timedatectl set-ntp false                    # NTP üzerinden otomatik ağ zamanı senkronizasyonunu devre dışı bırakır
+locale                                       # Sistemde tanımlı yerel ayarları ve dil değişkenlerini (LC_ALL, LANG vb.) listeler
+date                                         # Sistem saat ve tarihini ekrana basar veya manuel ayarlar
+date +%s                                     # Geçerli sistem zamanını Unix epoch (timestamp) formatında saniye cinsinden basar
+ntpd                                         # NTP (Ağ Zaman Protokolü) arka plan servisi (daemon) - sürekli otomatik senkronizasyon
+ntpdate                                      # Belirtilen NTP sunucusu üzerinden tek seferlik manuel zaman senkronizasyonu yapar
+ntpdate pool.ntp.org                         # Zamanı 'pool.ntp.org' NTP havuz sunucusu ile senkronize eder
+hwclock                                      # Donanım saatini (RTC - Real Time Clock) okur veya ayarlar
+hwclock --systohc --localtime                # Sistem saatini yerel zaman dilimine göre donanım saatine (RTC) yazar
+hwclock --systohc --utc                      # Sistem saatini UTC standardında donanım saatine (RTC) yazar
+vmstat                                       # Süreç, bellek, swap/paging, blok I/O, kesme ve CPU aktiviteleri hakkında anlık rapor üretir
+lscpu                                        # CPU mimarisi, çekirdek sayısı, soket ve önbellek bilgilerini listeler
+lspci                                        # Anakart üzerindeki tüm PCI/PCIe cihazlarını listeler
+lsusb                                        # Sisteme bağlı tüm USB denetleyicileri ve cihazları listeler
+free                                         # Sistemdeki toplam, kullanılan, boş bellek (RAM) ve swap alanını görüntüler
+uname -r                                     # Çalışan Linux çekirdeğinin sürüm numarasını (kernel release) basar
+uname -p                                     # İşlemci mimari türünü ekrana basar
+uname -o                                     # İşletim sistemi adını (ör. GNU/Linux) basar
+dmesg                                        # Çekirdek halka arabelleği (kernel ring buffer) / boot log mesajlarını görüntüler veya temizler
+lsmod                                        # Çekirdeğe o an yüklenmiş modülleri (drivers/modules) listeler
+modprobe                                     # Bağımlılıklarıyla birlikte Linux çekirdeğine modül yükler veya kaldırır
+rmmod                                        # Belirtilen modülü Linux çekirdeğinden kaldırır/boşaltır
+env                                          # O anki kabuk ortam değişkenlerinin (environment variables) tamamını listeler
+export                                       # Dışa aktarılan (exported) ortam değişkenlerini görüntüler
+export ENV=/home/user                        # Alt süreçlere aktarılacak yeni bir ortam değişkeni tanımlar
+declare -r ENV=/home/user                    # Değeri değiştirilemeyen salt-okunur (read-only) bir kabuk değişkeni tanımlar
+crontab -e                                   # Geçerli kullanıcının zamanlanmış görev (crontab) tablosunu düzenler
+crontab -l                                   # Geçerli kullanıcının aktif crontab görevlerini listeler
+export VISUAL=nano; crontab -e               # Crontab için varsayılan düzenleyiciyi 'nano' olarak atayıp tabloyu açar
+at                                           # İleri bir saatte tek seferlik çalıştırılacak görev kuyruğuna komut ekler
+atq                                          # 'at' ile zamanlanmış bekleyen görev kuyruğunu listeler
+atrm                                         # 'at' görev kuyruğundan belirtilen işi siler/iptal eder
+batch                                        # Sistem yük ortalaması (load average) belirli bir seviyenin altına indiğinde komut çalıştırır
+ping                                         # Hedef ana makineye ICMP yankı isteği (ECHO_REQUEST) göndererek ağ erişilebilirliğini test eder
+ping6                                        # IPv6 adresi üzerinden hedef ana makineye ICMPv6 yankı isteği gönderir
+dig                                          # DNS kayıtlarını (A, MX, NS, PTR vb.) sorgulamak için gelişmiş DNS aracı
+nslookup                                     # DNS sunucularını etkileşimli veya doğrudan sorgulama aracı
+traceroute                                   # Hedefe giden paketlerin ağ üzerindeki geçtiği tüm yönlendirici (hop) yollarını listeler
+traceroute6                                  # IPv6 ağı üzerinde hedefe giden yönlendirici atlama noktalarını izler
+tracepath                                    # Hedefe giden ağ yolunu izlerken yol üzerindeki MTU boyutunu otomatik tespit eder
+tracepath6                                   # IPv6 ağında yolu izler ve MTU boyutunu keşfeder
+service                                      # SysVinit servis başlatma/durdurma kontrol betiğini tetikler
+service --status-all                         # SysVinit tarafından yönetilen tüm servislerin güncel çalışma durumunu listeler
+service ssh start                            # SSH servisini başlatır (SysVinit)
+service ssh stop                             # SSH servisini durdurur (SysVinit)
+service ssh status                           # SSH servisinin anlık çalışma durumunu gösterir (SysVinit)
+service ssh restart                          # SSH servisini yeniden başlatır (SysVinit)
+systemctl                                    # Systemd servis yöneticisi ve birimlerini (units) kontrol eder
+systemctl list-units                         # Belleğe yüklenmiş ve aktif olan tüm systemd unit'lerini listeler
+systemctl status sound.target                # Belirtilen target/servisin anlık çalışma ve durum bilgilerini görüntüler
+systemctl stop sound.target                  # Bir veya daha fazla systemd unit'ini durdurur (deactivate)
+systemctl start sound.target                 # Bir veya daha fazla systemd unit'ini başlatır (activate)
+systemctl enable multi-user.target           # İlgili unit'in sistem açılışında otomatik başlamasını etkinleştirir (symlink oluşturur)
+systemctl set-default multi-user.target      # Sistemin varsayılan açılış hedefini çok kullanıcılı metin moduna (CLI) ayarlar
+systemctl set-default graphical.target       # Sistemin varsayılan açılış hedefini grafik arayüz moduna (GUI) ayarlar
+systemctl isolate multi-user.target          # Belirtilen target'ı derhal etkinleştirip diğer tüm bağımsız servisleri sonlandırır
+ifconfig -a                                  # Kapalı (down) olanlar dahil tüm ağ arayüzlerini ve IP yapılandırmalarını listeler
+ifconfig eth0 up                             # Belirtilen ağ arayüzünü (eth0) aktif (UP) hale getirir
+ifconfig eth0 down                           # Belirtilen ağ arayüzünü (eth0) pasif (DOWN) hale getirir
+ifup                                         # Ağ arayüzünü /etc/network/interfaces yapılandırmasına göre ayağa kaldırır
+ifdown                                       # Ağ arayüzünü yapılandırmaya uygun şekilde kapatır
+route                                        # Çekirdek IP yönlendirme (routing) tablosunu görüntüler veya düzenler
+route -n                                     # DNS çözümlemesi yapmadan yönlendirme tablosunu sayısal IP formatında hızlıca basar
+route add <> netmask <> gw <>                # Ağ maskesi ve ağ geçidi (gateway) belirterek statik rota ekler
+route del                                    # Yönlendirme tablosundan belirtilen rotayı siler
+ip a, ip addr, ip address                    # Ağ arayüzlerine atanmış IP adreslerini ve durumlarını görüntüler
+ip link                                      # Ağ arayüzlerinin fiziksel/bağlantı katmanı (MAC, MTU, UP/DOWN) durumunu listeler
+ip route show                                # Çekirdek IP yönlendirme tablosu kayıtlarını listeler
+ip route add <>/<> broadcast <> via <> eth0  # Arayüz ve ağ geçidi belirterek yönlendirme tablosuna yeni rota ekler
+netstat -r                                   # Çekirdek yönlendirme (routing) tablosunu görüntüler
+netstat -at                                  # Dinlenen (LISTEN) ve açık olan tüm TCP soket bağlantılarını listeler
+lsof                                         # Sistemde o an açık olan tüm dosyaları ve bunları tutan süreçleri listeler
+lsof /tmp                                    # /tmp dizini altındaki dosyaları açık tutan süreçleri (process) listeler
+iptables -L                                  # Tanımlı tüm güvenlik duvarı (firewall / filtreleme) kurallarını listeler
+iwlist ens33 auth                            # Kablosuz ağ arayüzüne ait kimlik doğrulama parametrelerini listeler
+netcat -l 12345                              # Belirtilen TCP portunda dinlemeye (listen) geçer
+netcat 192.168.0.12 12345                    # Belirtilen IP ve porta TCP soket bağlantısı açar / veri gönderir
+nc -l 12345                                  # Netcat kısa komutu; belirtilen portu dinlemeye alır
+nc 192.168.0.12 12345                        # Netcat kısa komutu; hedef IP ve porta soket bağlantısı kurar
+nmap localhost                               # Ağ keşif, güvenlik denetimi ve port tarama aracını yerel makinede çalıştırır
+dpkg -l                                      # Debian/Ubuntu sisteminde kurulu tüm paketleri listeler
+dpkg -i                                      # Debian paket dosyasını (.deb) sisteme doğrudan kurar
+dpkg --purge                                 # Paketi tüm yapılandırma dosyaları dahil sistemden tamamen temizleyerek siler
+dpkg-reconfigure                             # Önceden kurulmuş bir paketin başlangıç yapılandırma sihirbazını yeniden çalıştırır
+apt-get update                               # /etc/apt/sources.list içindeki repo indekslerini günceller
+apt-get dist-upgrade                         # Paket bağımlılıklarını akıllıca yöneterek (gerekirse eskiyi silip yeniyi kurarak) tam yükseltme yapar
+apt-get install                              # Belirtilen paketi ve gerekli bağımlılıklarını repodan indirip kurar
+apt-get remove                               # Paketi kaldırır ancak yapılandırma dosyalarını sistemde bırakır
+apt-get purge                                # Paketi tüm konfigürasyon dosyalarıyla birlikte tamamen kaldırır
+apt-get autoremove                           # Sistemde artık hiçbir paket tarafından ihtiyaç duyulmayan artık bağımlılıkları temizler
+apt-cache pkgnames                           # APT veritabanında bilinen tüm paket adlarını listeler
+apt-cache search                             # Paket listelerinde ve açıklamalarında anahtar kelime araması yapar
+apt-cache depends                            # Belirtilen paketin ihtiyaç duyduğu tüm bağımlılıkları listeler
+aptitude                                     # Gelişmiş menü tabanlı terminal arayüzüne sahip APT paket yöneticisi
+rpm -i                                       # RHEL/CentOS RPM (.rpm) paket dosyasını doğrudan kurar
+rpm2cpio                                     # RPM paket içeriğini standart cpio arşiv formatına dönüştürür
+cpio -idmv                                   # CPIO arşiv dosyalarındaki içerikleri dizine çıkartır
+yum update                                   # RHEL tabanlı sistemlerde paketleri ve bağımlılıkları günceller
+yum install                                  # Paketi ve gerekli tüm bağımlılıkları repolardan çekip kurar
+yum install --downloadonly --downloaddir=/tmp # Paketi kurmadan sadece RPM dosyasını ve bağımlılıklarını belirtilen dizine indirir
+yum update                                   # Sistemdeki paketleri repolardaki son sürümlere günceller
+yum remove                                   # Belirtilen paketi ve buna bağımlı bileşenleri sistemden kaldırır
+yumdownloader                                # YUM depolarından belirli bir RPM paketini sisteme kurmadan doğrudan indirir
+wget                                         # Web üzerinden HTTP/HTTPS/FTP protokolleriyle arka planda/etkileşimsiz dosya indirme aracı
+ldconfig                                     # /etc/ld.so.conf, /lib ve /usr/lib dizinlerindeki dinamik kütüphane bağlarını ve önbelleği günceller
+ldconfig -p                                  # Dinamik bağlayıcı önbelleğinde (ld.so.cache) kayıtlı kütüphane listesini basar
+ldd /bin/ls                                  # Bir ikili dosyanın (binary) ihtiyaç duyduğu paylaşımlı kütüphaneleri (.so) listeler
+ps                                           # O an çalışan süreçlerin (processes) anlık durum dökümünü verir
+ps -A                                        # Sistemdeki tüm aktif süreçleri listeler
+ps -e                                        # Tüm süreçleri listeler (-A ile tamamen aynı işlevi görür)
+ps aux                                       # BSD sözdizimiyle sistemdeki tüm kullanıcı süreçlerini ayrıntılı olarak listeler
+top                                          # Sistem süreçlerini, bellek ve CPU kullanımını canlı/gerçek zamanlı izleme aracı
+kill                                         # Sürece sinyal gönderir (Varsayılan sinyal: SIGTERM - 15)
+kill -SIGINT 78929                           # PID'si verilen sürece kesme sinyali (SIGINT - Ctrl+C karşılığı) gönderir
+kill -SIGKILL 78929                          # PID'si verilen süreci zorla anında sonlandırır (SIGKILL - 9)
+pkill ping                                   # İsmi veya deseni eşleşen süreçlere sinyal göndererek sonlandırır
+killall ping                                 # Belirtilen ada sahip tüm süreçleri tek seferde sonlandırır
+nice -12 large-job                           # Bir programı özel CPU öncelik değeriyle (niceness) başlatır
+renice -5 -p 1575                            # Çalışmakta olan bir sürecin CPU öncelik değerini (priority) sonradan değiştirir
+nohup <> &                                   # Oturum kapansa bile (SIGHUP sinyaline karşı) arka planda kesintisiz çalışmayı sağlar
+bg                                           # Askıya alınmış (Ctrl+Z ile durdurulmuş) bir görevi arka planda (background) devam ettirir
+jobs                                         # Geçerli kabukta çalışan aktif arka plan görevlerini listeler
+fg                                           # En son çalıştırılan arka plan görevini ön plana (foreground) alır
+fg %1                                        # Belirtilen iş numarasına (job ID) sahip süreci ön plana alır
+kill %2                                      # 2 numaralı arka plan görevini sonlandırır
+tail -n 5 /var/log/syslog                    # Dosyanın son 5 satırını ekrana basar
+tail -f /var/log/syslog                      # Dosyaya eklenen yeni satırları canlı/gerçek zamanlı olarak terminalde izler
+grep                                         # Metin içerisinde belirtilen düzenli ifadeyi (regex) veya deseni arar
+grep -E                                      # Gelişmiş düzenli ifadeler (Extended Regex) kullanarak arama yapar
+egrep                                        # 'grep -E' komutunun geleneksel kısa halidir
+grep -F                                      # Regex karakterlerini yorumlamadan sabit metin (fixed string) olarak hızlı arama yapar
+fgrep                                        # 'grep -F' komutunun geleneksel kısa halidir
+rsync                                        # Yerel veya uzak sunucular arasında delta transferi ile hızlı dosya senkronizasyonu ve kopyalama
+echo                                         # Kendisine parametre olarak verilen metni standart çıktıya (stdout) basar
+echo -e                                      # Ters eğik çizgi kaçış karakterlerinin (\n, \t vb.) yorumlanmasını etkinleştirerek çıktı verir
+./                                           # Mevcut dizindeki çalıştırılabilir betiği veya programı çalıştırır
+source                                       # Belirtilen dosyadaki komutları yeni alt-kabuk açmadan mevcut kabuk ortamında yürütür
+.                                            # 'source' komutunun POSIX standartlarındaki kısa karşılığıdır
+chmod                                        # Dosya ve dizinlerin erişim izinlerini (okuma, yazma, çalıştırma) değiştirir
+chmod +x script.sh                           # Dosyaya tüm kullanıcılar için çalıştırma (execute) yetkisi ekler
+chmod -R 754 myfiledir                       # Dizin ve altındaki tüm dosya/klasör izinlerini yinelemeli (recursive) olarak değiştirir
+chown -R daniel:group myfiledir              # Dizin ve altındaki tüm içeriğin kullanıcı ve grup sahipliğini yinelemeli değiştirir
+chgrp -R group myfiledir                     # Dizin ve altındaki tüm içeriğin grup sahipliğini yinelemeli değiştirir
+useradd                                      # Sistemde yeni bir kullanıcı hesabı oluşturur (varsayılan olarak kilitli parola ile)
+useradd -u 1000 -g 500 daniel -G group dans  # Belirli UID, birincil grup ve ikincil ek gruplar atayarak yeni kullanıcı tanımlar
+userdel --force --remove daniel              # Kullanıcıyı home dizini ve posta kutusu dahil sistemden tamamen siler
+usermod                                      # Mevcut bir kullanıcı hesabının özelliklerini (grup, shell, home vb.) günceller
+usermod -L david                             # Kullanıcı hesabının parolasını kilitler (girişi engeller)
+passwd                                       # Kullanıcı parolasını değiştirir
+pwconv                                       # /etc/passwd dosyasındaki parolaları /etc/shadow formatına dönüştürür ve eşitler
+grpconv                                      # /etc/group dosyasındaki grup parolalarını /etc/gshadow formatına aktarır
+groupadd                                     # Sistemde yeni bir kullanıcı grubu oluşturur
+groupdel                                     # Sistemde kayıtlı bir grubu siler
+groupmod                                     # Mevcut bir grubun adını veya GID değerini değiştirir
+gpasswd                                      # Grup yöneticisi atar veya grup parolasını düzenler
+chage --list daniel                          # Kullanıcı parolasının geçerlilik, son kullanma ve yaşlandırma bilgilerini listeler
+chage -d 0 daniel                            # Kullanıcının ilk oturum açışında parolasını zorunlu olarak değiştirmesini sağlar
+chage -E "2009-05-31" daniel                 # Kullanıcı hesabının geçerliliğini yitireceği son tarihi belirler
+umask                                        # Yeni oluşturulan dosya ve dizinler için varsayılan izin maskesini (sekizlik) gösterir/ayarlar
+umask -S                                     # Dosya izin maskesini sembolik metin (r, w, x) formatında görüntüler
+getent hosts                                 # Ad Çözümleme Servisi (NSS) veritabanlarından 'hosts' kayıtlarını çeker
+su = su root                                 # Mevcut oturum ortamını koruyarak root (superuser) yetkilerine geçiş yapar
+su daniel                                    # Mevcut ortam değişkenlerini koruyarak 'daniel' kullanıcısına geçiş yapar
+su - = su - root                             # Tüm ortam değişkenlerini sıfırlayıp temiz bir root giriş oturumu (login shell) açar
+su - daniel                                  # 'daniel' kullanıcısının tam login oturumuna (kendi ortam değişkenleriyle) geçiş yapar
+sudo su                                      # Kullanıcının kendi sudo parolasını kullanarak root yetkisiyle kabuk açar
+last                                         # Sistemde son oturum açan kullanıcıların ve yeniden başlatmaların (wtmp) geçmişini listeler
+wall                                         # Terminali açık olan tüm kullanıcılara genel yayın (broadcast) mesajı gönderir
+visudo                                       # /etc/sudoers dosyasını sözdizimi denetimi yaparak güvenli bir şekilde düzenler
+ulimit -a                                    # Süreçler için tanımlı tüm sistem kaynak sınırlarını (dosya sayısı, bellek vb.) listeler
+ulimit -u                                    # Kullanıcı başına çalıştırılabilecek maksimum süreç (process) sınırını görüntüler/ayarlar
+set                                          # Kabuk seçeneklerini ve konum parametrelerini ayarlar veya ortam değişkenlerini listeler
+set -o noclobber                             # '>' yönlendirmesi yapılırken mevcut dosyaların kazara üzerine yazılmasını (overwrite) engeller
+set -x                                       # Kabuk betiklerinde hata ayıklama (debug) için yürütülen her komutu ve argümanını ekrana basar
+set +x                                       # Komut izleme / debug modunu kapatır
+cat                                          # Dosya içeriklerini birleştirir ve standart çıktıya (stdout) basar
+cat -vet                                     # Sekmeleri (^I), satır sonlarını ($) ve basılamayan karakterleri görünür kılar
+expand                                       # Metin dosyalarındaki sekme (TAB) karakterlerini boşluk (space) karakterine dönüştürür
+unexpand                                     # Metin dosyalarındaki boşlukları sekme (TAB) karakterine dönüştürür
+wc                                           # Dosyadaki satır, kelime ve bayt sayısını hesaplayıp ekrana basar
+fmt                                          # Metin paragraflarını belirli bir satır genişliğine göre yeniden biçimlendirir
+pr                                           # Metin dosyalarını sayfalama ve başlık ekleyerek yazdırmaya uygun hale getirir
+join                                         # İki farklı dosyayı ortak bir sütun alanı üzerinden ilişkisel olarak birleştirir
+paste                                        # Dosyalardaki satırları yan yana (TAB ile ayırarak) birleştirip standart çıktıya basar
+nl                                           # Metin dosyalarının satırlarına numara ekleyerek ekrana basar
+>                                            # Standart çıktıyı hedef dosyaya yönlendirir (dosya içeriğinin üzerine yazar)
+>>                                           # Standart çıktıyı hedef dosyanın sonuna ekler (append)
+<                                            # Dosya içeriğini komuta standart girdi (stdin) olarak besler (örn: sort < /etc/passwd)
+<<                                           # Belirtilen bitiş kelimesi girilene kadar kullanıcıdan çok satırlı girdi (Heredoc) alır
+2>                                           # Standart hata akışını (stderr - dosya tanıtıcı 2) dosyaya yönlendirir
+&>                                           # Hem standart çıktıyı (stdout) hem de standart hatayı (stderr) aynı dosyaya yönlendirir
+ls /tmp/hello > error.log 2>&1               # Hata akışını standart çıktıya bağlar ve tüm çıktıları tek bir log dosyasına yazar
+2>&1                                         # Standart hatayı (stderr - 2), standart çıktının (stdout - 1) aktığı kanala yönlendirir
+logger                                       # Komut satırından sistem log servisine (syslog/journal) manuel log kaydı ekler
+tee                                          # Standart girdiden okuduğu veriyi hem ekrana basar hem de dosyaya yazar
+sort                                         # Metin satırlarını alfabetik veya sayısal olarak sıralar
+sort -k 3                                    # Metin satırlarını 3. sütuna/alana göre sıralar
+sort << END                                  # 'END' anahtar kelimesi yazılana kadar girilen satırları sıralar
+tr -s ' ' < file.txt                         # Metindeki ardışık tekrarlanan boşlukları tek bir boşluğa indirger (squeeze)
+tr -d 'to_remove' < file.txt                 # Belirtilen karakter kümesindeki tüm harfleri metinden siler
+sed -e s/Nick/John file.txt                  # Metin akışı düzenleyicisi; dosyadaki ilk 'Nick' ifadesini 'John' ile değiştirir
+sed 's/Nick/John/g' file.txt                 # Dosyadaki tüm 'Nick' ifadelerini genel olarak (global) 'John' ile değiştirir
+cut -c3 names                                # Metin satırlarının yalnızca 3. karakterini dikey olarak kesip alır
+cut -c3-10 names                             # Metin satırlarının 3 ile 10. karakterleri arasındaki aralığı kesip alır
+cut -d: -f1-2 names                          # ':' ayırıcısına (delimiter) göre satırı sütunlara böler ve 1 ile 2. alanları alır
+cut -f 1 -d " " names                        # Boşlukla ayrılmış metnin 1. alanını çeker
+cut -f 2 -d " " names                        # Boşlukla ayrılmış metnin 2. alanını çeker
+cut -f 2 -d " " names | paste names -        # 2. alanı kesip orijinal dosya içeriğiyle yan yana birleştirir
+cut -f 2 -d " " names | paste names - | sort -k 3 | cut -f 1 # Alan kesme, birleştirme ve 3. alana göre sıralama boru hattı (pipeline)
+uniq                                         # Sıralanmış bir metindeki ardışık mükerrer (tekrar eden) satırları eler veya raporlar
+split file.txt header_text_for_files         # Büyük bir dosyayı belirli satır veya bayt boyutlarında küçük parçalara böler
+iconv -f utf-8 -t ISO_8895-15 < file1.txt > file2.txt # Metin dosyasının karakter kodlamasını (encoding) UTF-8'den ISO-8859-15'e dönüştürür
+xargs                                        # Standart girdiden gelen satırları argümanlara dönüştürerek hedef komutu yürütür
+ls name* | xargs paste                       # Filtrelenen dosyaları 'paste' komutuna argüman olarak geçirip yan yana basar
+pwd                                          # O an bulunulan geçerli çalışma dizininin (working directory) tam yolunu basar
+ls                                           # Dizin içeriğindeki dosya ve klasörleri listeler
+ls -i                                        # Dosyaları dosya sistemi düğüm numaralarıyla (inode) birlikte listeler
+ls -lrt                                      # Değiştirilme zamanına göre tersten (en yeni en altta) ayrıntılı liste formatında basar
+la                                           # Gizli (.) dosyalar dahil tüm dizin içeriğini listeler
+alias ls="ls -al"                            # Karmaşık bir komut dizilimi için kalıcı/geçici kısayol (alias) tanımlar
+cd                                           # Çalışma dizinini değiştirir
+mv                                           # Dosya veya dizinleri taşır ya da yeniden adlandırır
+cp                                           # Dosya ve dizinleri kopyalar
+rm                                           # Dosya veya dizinleri siler
+scp                                          # SSH protokolü üzerinden uzak sunucuya/sunucudan güvenli dosya kopyalar
+scp -i                                       # Uzak sunucuya SCP ile dosya aktarırken özel SSH anahtarını (private key) belirtir
+tar -zcvf to.tar.gz files_to_compress        # Dosyaları gzip ile sıkıştırarak '.tar.gz' arşivi oluşturur (-z: gzip, -c: create, -v: verbose, -f: file)
+tar -zxvf to.tar.gz files_to_compress        # '.tar.gz' arşivini açar ve geçerli dizine çıkartır (-x: extract)
+tar -cvf to.tar files_to_compress            # Dosyaları sıkıştırmadan tek bir '.tar' arşiv paketi haline getirir
+gzip to.tar >> to.tar.gz                     # Dosyayı gzip algoritmasıyla sıkıştırır
+gzip -d to.tar.gz >> to.tar                  # Gzip ile sıkıştırılmış arşivin sıkıştırmasını açar (-d: decompress)
+find . -name "protocols"                     # Bulunulan dizinde ve alt dizinlerinde adı "protocols" olan dosyaları arar
+find ./ -name "protocols"                    # Geçerli dizin yolundan başlayarak dosya adına göre arama yapar
+find / -name "protocols"                     # Kök dizinden (/) itibaren tüm sistemde dosya adına göre arama yapar
+find / -inum 129698                          # Kök dizinden itibaren belirtilen inode numarasına sahip dosyayı bulur
+find /etc -type f -mtime +30                 # /etc altında son 30 günden daha önce değiştirilmiş normal dosyaları arar
+find /etc -type f -size +1M                  # /etc altında boyutu 1 Megabayt'tan büyük dosyaları listeler
+find /usr -type f -size -1M                  # /usr altında boyutu 1 Megabayt'tan küçük dosyaları listeler
+find /usr -maxdepth 2 -type f -size +1M      # En fazla 2 alt dizin derinliğine inerek 1 MB'tan büyük dosyaları arar
+find /var/log -mmin -60                      # /var/log altında son 60 dakika içinde değiştirilmiş dosyaları bulur
+locate                                       # 'updatedb' tarafından oluşturulan indeks veritabanını kullanarak anında hızlı dosya arar
+updatedb                                     # 'locate' ve 'mlocate' komutları için dosya sistemi indeks veritabanını günceller
+ln file1 file2                               # İki dosya arasında aynı inode'u paylaşan katı bağ (hard link) oluşturur
+ln -s                                        # Dosya veya dizinler için sembolik/yumuşak bağ (symlink/soft link) oluşturur
+df                                           # Dosya sistemlerinin disk alanı kullanımını ve doluluk oranlarını raporlar
+df -h                                        # Disk alanı kullanımını okunabilir boyut birimlerinde (MB, GB) görüntüler
+df -T                                        # Disk alanını dosya sistemi türleriyle (ext4, xfs vb.) birlikte listeler
+du                                           # Dosya ve dizinlerin diskte kapladığı gerçek alanı hesaplar
+du -h                                        # Dizin boyutlarını insan tarafından okunabilir (KB, MB, GB) formatta gösterir
+lsblk                                        # Blok depolama aygıtlarını (diskler, partisyonlar, LVM) ağaç yapısında listeler
+lsblk -f                                     # Blok aygıtlarını dosya sistemi türleri, UUID ve bağlama noktalarıyla listeler
+fdisk /dev/sda                               # MBR bölümleme tablosuna sahip diskleri yönetmek/bölümlemek için disk aracı
+fdisk -l /dev/sda                            # Diskin MBR bölümleme tablosunu ve mevcut partisyonlarını listeler
+gdisk /dev/sda                               # GPT (GUID Partition Table) disk bölümleme aracını başlatır
+gdisk -l /dev/sda                            # Diskin GPT bölümleme tablosunu ve detaylarını listeler
+parted                                       # Hem MBR hem GPT destekli gelişmiş disk bölümleme ve boyutlandırma aracı
+mkfs /dev/sdb1                               # Belirtilen disk bölümüne varsayılan Linux dosya sistemini oluşturur (formatlar)
+mkfs -t ext3 /dev/sdb1                       # Bölüm üzerinde belirtilen türde (ext3) dosya sistemi oluşturur
+mkfs.ext3 /dev/sdb1                          # Bölümü doğrudan 'ext3' dosya sistemiyle formatlar (önerilen kullanım)
+mkfs.xfs -f /dev/sdb1                        # Bölüm üzerinde zorla (overwrite) yeni bir XFS dosya sistemi oluşturur
+mount /dev/sdb1 /mnt/Photos                  # Disk bölümünü dosya hiyerarşisinde belirtilen bağlama noktasına (/mnt/Photos) bağlar
+umount /mnt/Photos                           # Bağlanmış bir dosya sistemini bağlama noktasından ayırır (unmount)
+mkswap /dev/sdb2                             # Belirtilen disk bölümünü veya dosyayı Linux Swap (takas alanı) olarak biçimlendirir
+swapon /dev/sdb2                             # Biçimlendirilmiş takas (swap) alanını sistemde aktif hale getirir
+swapoff /dev/sdb2                            # Aktif takas (swap) alanını devre dışı bırakır
+fsck /dev/sda1                               # Linux dosya sistemindeki tutarsızlıkları denetler ve onarır
+e2fsck /dev/sda1                             # ext2/ext3/ext4 dosya sistemlerine özel gelişmiş dosya sistemi denetim ve onarım aracı
+dumpe2fs -h /dev/sda1                        # ext2/ext3/ext4 dosya sistemine ait superblock başlık ve meta verilerini görüntüler
+tune2fs -l /dev/sda1                         # ext dosya sisteminin superblock parametrelerini listeler
+tune2fs -L Photos /dev/sda1                  # Dosya sistemi bölümüne yeni bir birim etiketi (volume label) atar
+tune2fs -c 10 /dev/sda1                      # Bölümün her 10 mount işleminden sonra e2fsck ile otomatik taranmasını ayarlar
+fuser /tmp                                   # Belirtilen dosya, dizin veya soketi kullanan süreçlerin PID'lerini tespit eder
+/etc/fstab                                   # Kota ayarı için ilgili dosya sistemine 'usrquota/grpquota' mount opsiyonları eklenir
+quotacheck -avug                             # Tüm dosya sistemlerinde kota taraması yapar; 'aquota.user' ve 'aquota.group' dosyalarını üretir
+quota -u daniel testuser                     # Belirtilen kullanıcının disk kullanımını ve kota sınırlarını raporlar
+quota -g group testuser                      # Belirtilen grubun disk kullanımını ve tanımlı kota sınırlarını raporlar
+edquota -u daniel                            # Kullanıcı disk kotalarını metin düzenleyicide açarak düzenler
+edquota -g group                             # Grup disk kotalarını metin düzenleyicide açarak düzenler
+repquota /mnt/Photos                         # Belirtilen dosya sistemi genelinde tüm kullanıcı ve grup kotalarının özet dökümünü verir
+quotaon /mnt/Photos                          # Dosya sistemi üzerinde disk kota denetimini ve sınırlandırmalarını aktif eder
+quotaoff /mnt/Photos                         # Dosya sistemi üzerindeki disk kota kısıtlamalarını devre dışı bırakır
+dd if=/dev/sda of=bootloader.bak bs=446 count=1 # Diskin ilk 446 baytlık MBR önyükleyici (bootloader) kodunu yedekler
+xxd bootloader.bak                           # Dosyanın onaltılık (hexdump) dökümünü alır veya hex kodunu binary'ye geri çevirir
+od                                           # Dosyaları sekizlik (octal), hex veya diğer formatlarda bayt bayt dökümler
+grub-probe --version                         # GRUB aygıt sorgulama aracının sürüm bilgisini görüntüler
+grub-probe --target=fs /boot/grub            # /boot/grub dizininin bulunduğu alt dosya sistemi türünü sorgular
+grub-probe --target=drive --device /dev/sda  # Belirtilen aygıtın GRUB sürücü adlandırma karşılığını tespit eder
+grub-install /dev/sda                        # GRUB önyükleyicisini belirtilen diskin MBR/EFI alanına kurar
+grub-mkconfig -o /boot/grub/grub.cfg         # GRUB şablonlarını ve çekirdekleri tarayarak güncel grub.cfg dosyasını üretir
+update-grub                                  # Debian/Ubuntu sistemlerinde 'grub-mkconfig -o /boot/grub/grub.cfg' çalıştıran sarmalayıcı
+init 3                                       # Sistemi ağ destekli çok kullanıcılı metin moduna (Runlevel 3) geçirir
+telinit 3                                    # SysVinit sürecine doğrudan sinyal göndererek çalışma seviyesini (runlevel 3) değiştirir
+screen -ls                                   # Arka planda açık olan tüm sanal terminal (screen) oturumlarını listeler
+screen -r 1499.screen_name                   # Ayrılmış (detached) durumdaki belirli bir screen oturumuna yeniden bağlanır
+screen                                       # Varsayılan ID ile yeni bir arka plan sanal terminal oturumu başlatır
+screen -S screen_name                        # İsimlendirilmiş yeni bir screen oturumu açar (Ayrılmak için: CTRL-A + d)
+apt-get -y install xorg                      # X11 / X Window grafik sunucu altyapı paketlerini kurar
+startx                                       # Grafik masaüstü ortamını veya X oturumunu komut satırından manuel başlatır
+apt-get -y install openbox                   # Hafif ve genişletilebilir Openbox pencere yöneticisini (Window Manager) kurar
+startx                                       # Yapılandırılmış pencere yöneticisiyle birlikte X oturumunu başlatır
+apt-get -y install lightdm gnome             # LightDM giriş yöneticisini ve GNOME masaüstü ortamını kurar
+export DISPLAY=:1                            # Grafik uygulamaların yönlendirileceği X ekran sunucusu numarasını tanımlar
+xterm                                        # X Window sistemi için standart grafik terminal emülatörünü açar
+xwininfo                                     # Ekranda tıklanan pencerenin pencere kimliği, boyutu ve konumu hakkında bilgi verir
+xdpyinfo                                     # X sunucusunun ekran çözünürlüğü, renk derinliği ve yetenekleri hakkında bilgi verir
+xhost +                                      # X grafik sunucusuna herhangi bir istemciden erişilmesine izin verir (güvensiz)
+xhost -                                      # X sunucusuna erişim kontrolünü yeniden kısıtlar (yalnızca yetkililer)
+journalctl -b -1                             # Bir önceki sistem açılışına (önceki boot) ait systemd log kayıtlarını görüntüler
+journalctl --since "2 days ago"              # Son 2 güne ait sistem log mesajlarını listeler
+mutt                                         # Terminal tabanlı metin arayüzlü e-posta okuma ve gönderme istemcisi
+mail -s "Hello World" someone@example.com    # Komut satırından belirtilen adrese konulu e-posta gönderir
+mail -s "This is the subject" somebody@example.com <<< 'This is the message' # Standart girdi üzerinden tek satırda e-posta gövdesi ileterek gönderir
+mailq                                        # Posta sunucusunun (MTA) giden e-posta kuyruğunu listeler
+newaliases                                   # /etc/aliases dosyasındaki takma adları işleyerek posta veritabanını yeniler
+lpq                                          # Yazıcı kuyruğunda bekleyen yazdırma işlerinin durumunu gösterir
+lpc                                          # Yazıcı kuyruklarını ve yazdırma birimlerini yönetir / işleri denetler
+lpr                                          # Dosyayı yazdırma kuyruğuna gönderir (yazdırır)
+cupsenable printer_name                      # Belirtilen CUPS yazıcısını veya yazıcı sınıfını yazdırma işlemlerine açar
+cupsdisable printer_name                     # Belirtilen CUPS yazıcısını durdurur ve yeni iş alımını askıya alır
+ssh-keygen                                   # SSH kimlik doğrulaması için genel/özel (public/private) anahtar çifti üretir
+chmod 700 ~/.ssh/                            # SSH anahtar dizini için güvenlik standartlarına uygun erişim izinlerini ayarlar (rwx------)
+chmod 644 ~/.ssh/id_rsa.pub                  # SSH genel anahtarı (public key) için standart okuma iznini tanımlar (rw-r--r--)
+chmod 600 ~/.ssh/id_rsa                      # SSH özel anahtarı (private key) için kritik gizlilik iznini ayarlar (yalnızca sahip okur/yazar: rw-------)
+eval `ssh-agent`                             # SSH özel anahtar parolalarını bellekte tutan ssh-agent arka plan sürecini başlatır
+ssh-add                                      # Özel SSH anahtarını şifresini sorarak bellekteki 'ssh-agent' oturumuna ekler
+touch file1.txt                              # Yeni ve boş bir dosya oluşturur veya mevcut dosyanın erişim/değiştirilme zamanını günceller
+rngd -r /dev/urandom                         # GPG anahtar üretimi gibi işlemler için donanım/sistem entropi havuzunu besler
+gpg --gen-key                                # Standart varsayılan parametrelerle yeni bir GPG/OpenPGP şifreleme anahtar çifti üretir
+gpg --gen-revoke your_email@address.com      # Anahtarın iptal edilmesi gerektiğinde kullanılacak yürürlükten kaldırma (revocation) sertifikası üretir
+gpg --keyserver pgp.mit.edu --search-keys params # Belirtilen anahtar sunucusunda (keyserver) kullanıcı ID'sine göre genel anahtar arar
+gpg --list-keys                              # Yerel anahtarlıkta (keyring) kayıtlı tüm genel GPG anahtarlarını listeler
+gpg --encrypt --recipient user file1.txt     # Dosyayı belirtilen alıcının genel anahtarıyla güvenli şekilde şifreler (.gpg üretir)
+la -la text1.txt.gpg                         # Şifrelenmiş dosyanın ayrıntılı izin ve boyut bilgilerini görüntüler
+gpg --decrypt file1.txt.gpg > file1.txt      # Şifrelenmiş (.gpg) dosyanın şifresini çözerek orijinal içeriği dosyaya yazar
