@@ -1,0 +1,103 @@
+## DIRECTORIES ##
+cat      /etc/hostname                       # Sistemin ana makine adı (hostname)
+cat      /etc/nsswitch.conf                  # Ad Hizmeti Değiştirici (NSS) yapılandırması; 'passwd', 'hosts' vb. için kaynak sırasını belirler
+cat      /etc/hosts                          # Statik IP-hostname eşlemeleri (yerel DNS çözümleme)
+cat      /etc/hosts.allow                    # TCP Wrappers: İzin verilen host'lar (önce işlenir)
+cat      /etc/hosts.deny                     # TCP Wrappers: Engellenen host'lar (ikinci sırada işlenir)
+cat      /etc/nologin                        # Bu dosya varsa sadece root giriş yapabilir; içeriği kullanıcıya mesaj olarak gösterilir
+cat      /etc/passwd                         # Kullanıcı hesabı veritabanı (UID, GID, home dizini, varsayılan shell bilgileri)
+cat      /etc/shadow                         # Kullanıcıların hash'lenmiş parolaları ve parola yaşlandırma politikaları
+cat      /etc/group                          # Grup tanımları ve gruba dahil kullanıcı listeleri
+cat      /etc/gshadow                        # Grup parolaları (hash'li) ve grup yöneticisi tanımları
+ls       /etc/skel                           # Yeni oluşturulan kullanıcıların /home/ dizinine kopyalanan varsayılan şablon dosyalar
+cat      /etc/profile                        # Tüm kullanıcılar için geçerli sistem geneli ortam değişkenleri (environment variables)
+file     /bin/bash                           # Bash shell ikili (binary) dosyası
+cat      /etc/bash.bashrc                    # Sistem geneli etkileşimli Bash kabuk yapılandırma dosyası
+cat      /etc/aliases                        # Posta yönlendirme (MTA/sendmail) takma adları (Bash alias değildir)
+cat      ~/.profile                          # Kullanıcıya özel kabuk (shell) başlangıç profili
+cat      ~/.bashrc                           # Kullanıcıya özel, oturum açma gerektirmeyen (non-login) etkileşimli Bash yapılandırması
+cat      ~/.bash_profile                     # Kullanıcıya özel, oturum açma (login - konsol veya SSH) anında çalışan Bash profili
+cat      ~/.bash_aliases                     # Kullanıcıya özel tanımlanan Bash takma adları (alias)
+cat      ~/.bash_login                       # Giriş (login) yapıldığında .bash_profile yoksa çalışan alternatif profil
+cat      ~/.bash_logout                      # Oturum kapatıldığında (logout) çalışan temizleme betiği
+cat      ~/.bash_history                     # Kullanıcının çalıştırdığı Bash komut geçmişi
+cat      /etc/issue                          # Giriş ekranından (login prompt) önce terminalde basılan karşılama ve sistem mesajı
+cat      /etc/os-release                     # Dağıtım ve işletim sistemi sürüm bilgileri
+cat      /etc/crontab                        # Sistem geneli zamanlanmış görevler (cron jobs) tablosu
+ls       /etc/cron.daily                     # Günlük olarak otomatik tetiklenen cron betikleri
+cat      /etc/anacrontab                     # Sürekli açık kalmayan sistemler için gecikmeli görev zamanlayıcı (anacron) tablosu
+cat      /etc/at.allow                       # 'at' veya 'batch' ile tek seferlik ileri zamanlı görev eklemesine izin verilen kullanıcılar
+cat      /etc/at.deny                        # 'at' veya 'batch' ile ileri zamanlı görev çalıştırması yasaklanan kullanıcılar
+cat      /etc/protocols                      # Sistemde tanımlı TCP/IP protokolleri, numaraları ve açıklamaları
+cat      /etc/services                       # Ağ servisleri ile standart TCP/UDP port eşlemeleri listesi
+cat      /etc/timezone                       # Yapılandırılmış saat dilimi (timezone) metin kaydı
+cat      /etc/localtime                      # Geçerli yerel saat dilimi bilgisi (genellikle /usr/share/zoneinfo altından symlink)
+cat      /etc/sudoers                        # Kullanıcı ve grup 'sudo' yetkilendirme kuralları (yalnızca 'visudo' ile düzenlenmeli)
+ls       /etc/sudoers.d/                     # Modüler sudo yetkilendirme dosyalarının eklendiği dizin
+cat      /etc/ntp.conf                       # NTP (Ağ Zaman Protokolü) zaman senkronizasyon servisi yapılandırması
+cat      /etc/inetd.conf                     # 'Internet Super-Server' (inetd) ana yapılandırma dosyası (servis yeniden başlatma gerektirir)
+cat      /etc/xinetd.conf                    # Gelişmiş internet süper-sunucusu (xinetd) ana yapılandırma dosyası
+ls       /etc/xinetd.d/                      # xinetd tarafından yönetilen servislere ait bağımsız yapılandırma dizini
+cat      /etc/initramfs-tools/initramfs.conf # Geçici kök dosya sistemi (initramfs) derleme ve modül yapılandırması
+ls       /etc/udev                           # Cihaz yöneticisi (udev/systemd) dizini; çekirdek olaylarına göre /dev yönetimini sağlar
+cat      /etc/udev/udev.conf                 # udev cihaz yöneticisi temel ayar dosyası
+file     /usr/sbin/logrotate                 # Log arşivleme ve döndürme (log rotation) ikili aracı
+cat      /etc/logrotate.conf                 # Log döndürme aracı için sistem geneli ana yapılandırma
+ls       /etc/logrotate.d                    # Yüklü paketlerin bağımsız log döndürme kural tanımları
+cat      /etc/logrotate.d/rsyslog            # rsyslog loglarının döndürme/arşivleme kuralları
+cat      /etc/rsyslog.conf                   # Sistem loglama servisi (rsyslog) ana yapılandırma dosyası
+ls       /etc/rsyslog.d                      # Servislere özel syslog filtreleme ve yönlendirme kuralları dizini
+cat      /etc/rsyslog.d/50-default.conf      # Standart/varsayılan sistem log kayıt kuralları (Debian/Ubuntu)
+cat      /etc/updatedb.conf                  # 'locate' veritabanı taranırken 'updatedb' tarafından dikkate alınan filtre ayarları
+cat      /etc/environment                    # Sistem geneli temel ortam değişkenleri (özellikle global PATH tanımı)
+cat      /etc/fstab                          # Dosya sistemlerinin açılışta hangi parametrelerle nereye bağlanacağını (mount) belirten tablo
+ls       /etc/rc0.d                          # SysVinit: Kapatma (Halt / Runlevel 0) anında çalışan servis betikleri
+ls       /etc/rc6.d                          # SysVinit: Yeniden başlatma (Reboot / Runlevel 6) anında çalışan servis betikleri
+cat      /etc/init/dbus.conf                 # D-Bus IPC servisine ait Upstart görev tanımı
+file     /sbin/upstart                       # Upstart init daemon ikili dosyası
+ls       /etc/init                           # Upstart servis tanımları (.conf) dizini
+file     /sbin/init                          # Klasik System-V init başlatma süreci ikili dosyası
+ls       /etc/init.d                         # Geleneksel System-V servis başlatma/durdurma betiklerinin bulunduğu dizin
+cat      /etc/init.d/networking              # SysVinit ağ yönetim servis betiği
+cat      /etc/init.d/cron                    # SysVinit cron arka plan servis betiği
+cat      /etc/init.d/halt                    # SysVinit sistemi kapatma betiği
+cat      /etc/init.d/dbus                    # SysVinit dbus servis yönetim betiği
+cat      /etc/init.d/functions               # init.d betiklerinin kullandığı ortak fonksiyonları içeren kütüphane (RedHat)
+cat      /etc/inittab                        # SysVinit sistem açılış seviyesini (runlevel) ve inittab süreçlerini tanımlayan dosya
+ls -lrt  /bin/systemd                        # Systemd ana init süreci sembolik bağı (symlink)
+file     /lib/systemd/systemd                # Systemd ana servis yöneticisi ve init ikili dosyası
+ls -lrt  /etc/systemd/system/                # Sistem yöneticisi tarafından eklenen veya etkinleştirilen systemd unit/servis bağları
+ls       /lib/systemd/system/*.target        # Paketlerle gelen systemd hedef (target/runlevel karşılığı) tanımları
+cat      /etc/systemd/journald.conf          # Systemd journald merkezi log servisi yapılandırması
+cat      /etc/default/grub                   # GRUB bootloader ana parametreleri ('update-grub' çalıştırılarak grub.cfg üretilir)
+ls       /etc/grub.d/                        # GRUB yapılandırma menüsünü oluşturan modüler şablon betikler
+cat      /boot/grub/menu.lst                 # Legacy GRUB (v1) önyükleyici menü yapılandırma dosyası
+cat      /boot/grub/grub.cfg                 # GRUB 2 derlenmiş ve çalışan önyükleyici menü dosyası (elle düzenlenmez)
+cat      /etc/dhcp/dhclient.conf             # DHCP istemcisi (/sbin/dhclient) yapılandırma dosyası
+cat      /etc/network/interfaces             # Ağ arayüzleri (interface) yapılandırma dosyası (Debian/Ubuntu geleneksel)
+cat      /etc/sysconfig/network              # Global ağ yapılandırma ve hostname dosyası (RHEL/CentOS)
+cat      /etc/sysconfig/network-scripts      # Arayüz bazlı ağ yapılandırma betikleri dizini (RHEL/CentOS ifcfg-*)
+cat      /etc/ssh/sshd_config                # OpenSSH sunucu (daemon) servis yapılandırması
+cat      /etc/cups/cupsd.conf                # CUPS yazdırma kuyruğu ve sunucusu yapılandırma dosyası
+ls       /usr/share/X11/xorg.conf.d/         # Xorg grafik sunucusu cihaz/girdi yapılandırma dizini
+cat      /etc/apt/sources.list               # APT paket yöneticisi repo kaynak listesi (Debian/Ubuntu)
+cat      /etc/yum.conf                       # YUM/DNF paket yöneticisi ana yapılandırma dosyası (RHEL/CentOS)
+ls       /etc/yum.repos.d                    # YUM/DNF depo (.repo) tanımlarının bulunduğu dizin
+cat      /etc/ld.so.conf                     # Dinamik kütüphane bağlayıcısının (ldconfig) arama yaptığı dizinlerin listesi
+ls       /etc/ld.so.conf.d/                  # ldconfig için ek kütüphane dizin tanımları (yeni ekleme sonrası 'ldconfig' çalıştırılır)
+ls       /lib                                # Temel paylaşımlı kütüphanelerin (shared libraries) bulunduğu çekirdek dizin
+ls       /usr/lib                            # Kullanıcı alanı uygulamaları için standart paylaşımlı kütüphane dizini
+ls       /dev/sd*                            # SCSI/SATA/SAS depolama sürücüleri ve bölüntüleri (partition)
+cat      /proc/1/status                      # PID 1 (Init/systemd) sürecinin durum ve bellek bilgilerini veren sözde dosya sistemi kaydı
+cat      /proc/1/io                          # PID 1 sürecine ait G/Ç (I/O) istatistikleri
+cat      /proc/1/syscall                     # PID 1 sürecinin o an yürüttüğü sistem çağrısı (syscall) ve argümanları
+ls       /var/log                            # Sistem ve uygulama loglarının depolandığı ana log dizini
+cat      /var/log/syslog                     # Genel sistem olay logları dosyası (Debian tabanlı sistemler)
+cat      /var/log/mail.log                   # Posta sunucusu (MTA) işlem ve teslimat logları
+cat      ~/.forward                          # Kullanıcı bazlı e-posta yönlendirme (forwarding) yapılandırması
+ls       ~/.ssh/                             # Kullanıcının SSH anahtarları ve SSH istemci ayarlarının bulunduğu kök dizin
+cat      ~/.ssh/id_rsa                       # Kullanıcıya ait özel SSH anahtarı (private key - gizli kalmalıdır)
+cat      ~/.ssh/id_rsa.pub                   # Kullanıcıya ait genel SSH anahtarı (public key)
+cp       ~/.ssh/authorized_keys              # Sunucuya anahtarla parola gerektirmeden giriş izni veren yetkili genel anahtar listesi
+cat      /etc/ssh/ssh_known_hosts            # Sistem geneli tanınan ve güvenilen uzak sunucu SSH parmak izi listesi
+cat      ~/.ssh/known_hosts                  # Kullanıcıya özel tanınan uzak sunucu SSH parmak izi (host key) listesi
